@@ -134,3 +134,13 @@ def xor_strings(s1, s2):
 
 
     return "".join(chr(ord(x) ^ ord(y)) for x, y in zip(s1, s2))
+
+
+def bitwise_complement_string(s):
+    """
+    Returns the bitwise complement of s.
+
+    :param s: string obejct to complement
+    :return: result of bitwuise complement
+    """
+    return xor_strings(s, len(s) * "\xFF")
