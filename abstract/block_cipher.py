@@ -53,7 +53,7 @@ class BlockCipher():
                   str(len(block)) + " should be: " + str(self.block_len) + ".")
 
         if not (key, block) in self.ciphers:
-            cipher = self._new_element(key, self.ciphers)
+            cipher = self._new_element(key, self.messages)
             self.ciphers[(key, block)] = cipher
             self.messages[(key, cipher)] = block
 
@@ -80,7 +80,7 @@ class BlockCipher():
                   str(len(cipher)) + " should be: " + str(self.block_len) + ".")
 
         if not (key, cipher) in self.messages:
-            message = self._new_element(key, self.messages)
+            message = self._new_element(key, self.ciphers)
             self.messages[(key, cipher)] = message
             self.ciphers[(key, message)] = cipher
 
