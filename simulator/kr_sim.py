@@ -17,7 +17,7 @@ class KRSim(BaseSim):
         self.game.initialize()
         return self.game.finalize(self.adversary(self.game.fn))
 
-    def compute_success_ratio(self):
+    def compute_success_ratio(self, trials=1000):
         """
         Runs the game 1000 times and computes the ratio of successful runs
         over total runs.
@@ -26,7 +26,7 @@ class KRSim(BaseSim):
         """
 
         results = []
-        for i in xrange(0, 1000):
+        for i in xrange(0, trials):
             results += [self.run()]
 
         successes = float(results.count(True))
@@ -34,11 +34,11 @@ class KRSim(BaseSim):
 
         return successes / (successes + failures)
 
-    def compute_advantage(self):
+    def compute_advantage(self, trials=1000):
         """
         Adv = Pr[KR => true]
 
         :return: Approximate advantage computed using the above equation.
         """
 
-        return self.compute_success_ratio()
+        return self.compute_success_ratio(trials)
