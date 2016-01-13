@@ -4,7 +4,9 @@ from crypto.primitives import random_string
 
 class GameTKR(Game):
     """
-    This game tests encryption schemes against key recovery attacks.
+    This game tests encryption schemes against key recovery attacks. This
+    game differs from KR in that you must match the exact target key.
+
     Adversaries have access to an fn oracle.
     """
     def __init__(self, encrypt, key_len, block_len):

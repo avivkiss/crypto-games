@@ -4,7 +4,8 @@ from crypto.primitives import random_string
 
 class GameKR(Game):
     """
-    This game tests encryption schemes against key recovery attacks.
+    This game tests encryption schemes against key recovery attacks. In order to
+    win in this instantiation of KR you must make at least one oracle query.
     Adversaries have access to an fn oracle.
     """
     def __init__(self, encrypt, key_len, block_len):
@@ -50,6 +51,9 @@ class GameKR(Game):
         :param key_guess: key to check
         :return: True if the key is consistent, False otherwise.
         """
+        if self.count is 0:
+            return False
+
         win = True
         for i in range(self.count):
             if self.encrypt(key_guess, self.messages[i]) != self.cyphers[i]:
