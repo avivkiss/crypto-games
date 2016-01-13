@@ -9,7 +9,7 @@ class MAC():
 
     .. testcode::
 
-        from crypto.abstract.message_authentication_code import MAC
+        from crypto.ideal.message_authentication_code import MAC
 
         m = "ABCDEFGH"
         k = "A" * 16

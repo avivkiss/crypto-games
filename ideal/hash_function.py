@@ -9,7 +9,7 @@ class HashFunction():
 
     .. testcode::
 
-        from crypto.abstract.hash_function import HashFunction
+        from crypto.ideal.hash_function import HashFunction
 
         h = HashFunction(16)
 

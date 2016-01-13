@@ -10,7 +10,7 @@ class BlockCipher():
     .. testcode::
 
         from crypto.primitives import *
-        from crypto.abstract.block_cipher import BlockCipher
+        from crypto.ideal.block_cipher import BlockCipher
 
         b = BlockCipher(16, 12)
         key = random_string(16)

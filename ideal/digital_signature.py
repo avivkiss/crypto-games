@@ -9,7 +9,7 @@ class DigitalSignature():
 
     .. testcode::
 
-        from crypto.abstract.digital_signature import DigitalSignature
+        from crypto.ideal.digital_signature import DigitalSignature
 
         m = "ABCDEFGH" * 16
         k = "A" * 128
