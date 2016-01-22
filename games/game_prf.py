@@ -53,7 +53,7 @@ class GamePRF(Game):
 
         :param m: Message adversary wants to encrypt.
         :return: Either the encrypted result in the real world or random result
-                 in the random world. 
+                 in the random world.
         """
         if len(m) is not self.block_len:
             raise ValueError("Message is of length " + str(len(m)) + \

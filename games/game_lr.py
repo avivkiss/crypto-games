@@ -10,19 +10,17 @@ class GameLR(Game):
     a left and right encryption. It is useful to determine how well a scheme
     is hiding its data from the adversary.
     """
-    def __init__(self, encrypt, key_len, block_len):
+    def __init__(self, encrypt, key_len):
         """
         :param encrypt: This must be a callable python function that takes two
                         inputs, k and x where k is a key of length key_len and
-                        x is a message of length block_len.
+                        x is a message.
         :param key_len: Length of the key (in bytes) used in the function that
                         will be tested with this game.
 
-        :param block_len: Length of the block (in bytes) used in the function
-                          that will be used in this game.
         """
         super(GameLR, self).__init__()
-        self.encrypt, self.key_len, self.block_len = encrypt, key_len, block_len
+        self.encrypt, self.key_len = encrypt, key_len
         self.key = ''
         self.b = -1
 
