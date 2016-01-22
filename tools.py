@@ -1,6 +1,10 @@
 from functools import partial
 from StringIO import StringIO
-from IPython import embed as debug
+
+try:
+    from IPython import embed as debug
+except ImportError:
+    pass
 
 def egcd(a, b):
     """
