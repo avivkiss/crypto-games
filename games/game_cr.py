@@ -40,6 +40,6 @@ class GameCR(game.Game):
         :param x2: Suspect collision member 2.
         :return: True if collision, false otherwise.
         """
-        if x1 is x2:
+        if x1 == x2:
             return False
         return self.hash(self. key, x1) == self.hash(self.key, x2)
