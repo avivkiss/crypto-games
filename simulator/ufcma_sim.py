@@ -15,10 +15,9 @@ class UFCMASim(BaseSim):
         :return: 1 for success and 0 for failure.
         """
         self.game.initialize()
-        self.adversary(self.game.tag, self.game.verify)
-        return self.game.finalize()
+        return self.game.finalize(self.adversary(self.game.tag))
 
-    def compute_success_ratio(self):
+    def compute_success_ratio(self, n=1000):
         """
         Runs the game 1000 times and computes the ratio of successful runs
         over total runs.
@@ -26,7 +25,7 @@ class UFCMASim(BaseSim):
         :return: successes / total_runs
         """
         results = []
-        for i in xrange(0, 1000):
+        for i in xrange(0, n):
             results += [self.run()]
 
         successes = float(results.count(1))
@@ -34,11 +33,11 @@ class UFCMASim(BaseSim):
 
         return successes / (successes + failures)
 
-    def compute_advantage(self):
+    def compute_advantage(self, n=1000):
         """
         Adv = Pr[UFCMA => True]
 
         :return: Approximate advantage computed using the above equation.
         """
 
-        return self.compute_success_ratio()
+        return self.compute_success_ratio(n)

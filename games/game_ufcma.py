@@ -44,25 +44,18 @@ class GameUFCMA(Game):
         self.messages += [message]
         return t
 
-    def verify(self, (message, tag)):
-        """
-        This is the verify oracle. If the adversary is able to come up with
-        even one forgery it wins.
 
-        :param message: Message to check tag with.
-        :param tag: Tag to check.
-        :return: 1 if the tag is valid 0 otherwise.
-        """
-        d = self._verify(self.key, message, tag)
-        if message not in self.messages and d == 1:
-            self.win = True
-        return d
-
-    def finalize(self):
+    def finalize(self, (message, tag)):
         """
         This method is usually called automatically by the simulator class
         to determine whether or not the adversary won the game.
 
         :return: True if successful, False otherwise.
         """
+        if message is None or tag is None:
+            return False
+
+        d = self._verify(self.key, message, tag)
+        if message not in self.messages and d == 1:
+            self.win = True
         return self.win
