@@ -10,7 +10,7 @@ class GameLR(Game):
     a left and right encryption. It is useful to determine how well a scheme
     is hiding its data from the adversary.
     """
-    def __init__(self, encrypt, key_len):
+    def __init__(self, encrypt, key_len, key_gen=None):
         """
         :param encrypt: This must be a callable python function that takes two
                         inputs, k and x where k is a key of length key_len and
@@ -23,6 +23,7 @@ class GameLR(Game):
         self.encrypt, self.key_len = encrypt, key_len
         self.key = ''
         self.b = -1
+        self.key_gen = key_gen
 
     def initialize(self, b=None):
         """
@@ -33,7 +34,11 @@ class GameLR(Game):
                   to control which world the game is in. This allows for
                   more exact simulation measurements.
         """
-        self.key = random_string(self.key_len)
+        if self.	key_gen is None:
+            self.key = random_string(self.key_len)
+        else:
+            self.key = self.key_gen()
+
         if b is None:
             b = random.randrange(0, 2, 1)
         self.b = b
